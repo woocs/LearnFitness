@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Learn&amp;Fitness</string>
+    <string name="title_home">Home</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_account_box">Me</string>
+
+    <!-- MeFragment -->
+    <string name="hello_blank_fragment">Hello</string>
+    <string name="buttonEditProfile">Edit Profile</string>
+    <string name="textViewUserName">User Name</string>
+    <string name="textViewAge">Age</string>
+    <string name="textViewGender">Gender</string>
+    <string name="textViewExperience">Experience</string>
+    <string name="buttonMyVideo">My Video</string>
+    <string name="buttonMyStory">My Story</string>
+    <string name="buttonCalculateBMI">Calculate BMI</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_my_video">MyVideoActivity</string>
+    <string name="title_activity_my_story">MyStoryActivity</string>
+    <string name="title_activity_calculate_bmi">CalculateBMIActivity</string>
+
+    <!--Edit Profile-->
+    <string name="editTextName">Name</string>
+    <string name="editTextAge">Age</string>
+    <string name="radioGroupGender">Gender</string>
+    <string name="radioButtonMale">Male</string>
+    <string name="radioButtonFemale">Female</string>
+    <string-array name="spinnerExperience">
+        <item>Select</item>
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+    </string-array>
+
+    <!--BMI-->
+    <string name="editTextWeight">Weight</string>
+    <string name="editTextHeight">Height</string>
+    <string name="buttonCalculate">Calculate</string>
+
+
+</resources>
