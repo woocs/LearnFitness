@@ -34,8 +34,8 @@
     </string-array>
 
     <!--BMI-->
-    <string name="editTextWeight">Weight</string>
-    <string name="editTextHeight">Height</string>
+    <string name="editTextWeight">Weight (kg)</string>
+    <string name="editTextHeight">Height (cm)</string>
     <string name="buttonCalculate">Calculate</string>
 
 
