@@ -19,10 +19,10 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@string/textViewAge"
+            android:text="@string/Age"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/textViewUserName"
-            app:layout_constraintLeft_toRightOf="@+id/imageViewProfile" />
+            app:layout_constraintLeft_toRightOf="@+id/imageViewProfile"
+            app:layout_constraintTop_toBottomOf="@+id/textViewUserName" />
 
         <TextView
             android:id="@+id/textViewUserName"
@@ -31,7 +31,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="24dp"
-            android:text="@string/textViewUserName"
+            android:text="@string/UserName"
             android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/imageViewProfile"
@@ -47,7 +47,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/textViewGender"
+            android:text="@string/Gender"
             android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintLeft_toRightOf="@+id/textViewAge"
@@ -63,12 +63,12 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@string/textViewExperience"
+            android:text="@string/Experience"
             android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/imageViewProfile"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAge"
-            app:layout_constraintLeft_toRightOf="@+id/imageViewProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewAge" />
 
         <ImageView
             android:id="@+id/imageViewProfile"
@@ -77,9 +77,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:srcCompat="@drawable/ic_account_box_black_24dp"
+            android:scaleType="fitCenter"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_account_box_black_24dp" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -107,20 +108,19 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Edit" />
+                    android:layout_marginTop="8dp"
+                    android:text="@string/EditProfile" />
 
                 <Button
                     android:id="@+id/buttonEditProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@android:color/background_light"
                     android:drawableLeft="@drawable/ic_account_box_black_24dp"
                     android:gravity="center_vertical"
-                    android:text="@string/buttonEditProfile" />
+                    android:text="@string/EditProfile" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -134,28 +134,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@android:color/background_light"
                     android:drawableLeft="@drawable/ic_videocam_black_24dp"
                     android:gravity="center_vertical"
-                    android:text="@string/buttonMyVideo" />
+                    android:text="@string/MyVideo" />
 
                 <Button
                     android:id="@+id/buttonMyStory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/background_light"
                     android:drawableLeft="@drawable/ic_assignment_black_24dp"
                     android:gravity="center_vertical"
-                    android:text="@string/buttonMyStory" />
+                    android:text="@string/MyStory" />
 
                 <Button
                     android:id="@+id/buttonCalculateBMI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/background_light"
                     android:drawableLeft="@drawable/ic_exposure_black_24dp"
                     android:gravity="center_vertical"
-                    android:text="@string/buttonCalculateBMI" />
+                    android:text="@string/CalculateBMI" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Setting" />
+
+                <Button
+                    android:id="@+id/buttonSingnIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorAccent"
+                    android:text="@string/SignIn"
+                    android:textColor="@android:color/background_light" />
 
             </LinearLayout>
         </ScrollView>

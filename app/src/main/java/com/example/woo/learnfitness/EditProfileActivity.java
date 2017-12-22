@@ -1,6 +1,9 @@
 package com.example.woo.learnfitness;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +11,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class EditProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner spinnerExp;
+    private ImageView imageViewProfile;
+    private Button buttonSelect;
+    private static final int REQUEST_PHOTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,30 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         spinnerExp.setOnItemSelectedListener(this);
         spinnerExp.setAdapter(adapter);
 
+
+        imageViewProfile = (ImageView) findViewById(R.id.imageViewProfile);
+        buttonSelect = (Button) findViewById(R.id.buttonSelect);
+        buttonSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (Intent.ACTION_OPEN_DOCUMENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+
+                startActivityForResult(intent, REQUEST_PHOTO);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_PHOTO && resultCode == RESULT_OK){
+            if(data != null) {
+                Uri uri = data.getData();
+                imageViewProfile.setImageURI(uri);
+            }
+        }
     }
 
     @Override

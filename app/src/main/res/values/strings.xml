@@ -7,18 +7,20 @@
 
     <!-- MeFragment -->
     <string name="hello_blank_fragment">Hello</string>
-    <string name="buttonEditProfile">Edit Profile</string>
-    <string name="textViewUserName">User Name</string>
-    <string name="textViewAge">Age</string>
-    <string name="textViewGender">Gender</string>
-    <string name="textViewExperience">Experience</string>
-    <string name="buttonMyVideo">My Video</string>
-    <string name="buttonMyStory">My Story</string>
-    <string name="buttonCalculateBMI">Calculate BMI</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="UserName">User Name</string>
+    <string name="Age">Age</string>
+    <string name="Gender">Gender</string>
+    <string name="Experience">Experience</string>
+    <string name="MyVideo">My Video</string>
+    <string name="MyStory">My Story</string>
+    <string name="CalculateBMI">Calculate BMI</string>
+    <string name="SignIn">Sign In</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_my_video">MyVideoActivity</string>
     <string name="title_activity_my_story">MyStoryActivity</string>
     <string name="title_activity_calculate_bmi">CalculateBMIActivity</string>
+    <string name="SelectProfilePicture">Select Profile Picture</string>
 
     <!--Edit Profile-->
     <string name="editTextName">Name</string>
@@ -32,11 +34,21 @@
         <item>Intermediate</item>
         <item>Advanced</item>
     </string-array>
+    <string name="SelectBefore">Select Image</string>
+    <string name="SelectAfter">Select Image</string>
 
     <!--BMI-->
     <string name="editTextWeight">Weight (kg)</string>
     <string name="editTextHeight">Height (cm)</string>
     <string name="buttonCalculate">Calculate</string>
 
+    <string name="login">Login</string>
+    <string name="endurance">Endurance exercises</string>
+    <string name="strength">Strength exercises</string>
+    <string name="balance">Balance exercises</string>
+    <string name="flexibility">Flexibility exercises</string>
+    <string name="VideoTitle">Video Title</string>
+    <string name="VideoCategories">Video Categories</string>
+    <string name="Save">Save</string>
 
 </resources>

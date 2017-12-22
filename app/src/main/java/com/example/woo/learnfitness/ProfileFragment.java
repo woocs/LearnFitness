@@ -14,7 +14,7 @@ import android.widget.Button;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
-    private Button buttonEditProfile, buttonMyVideo, buttonMyStory, buttonCalculateBMI;
+    private Button buttonEditProfile, buttonMyVideo, buttonMyStory, buttonCalculateBMI, buttonSignIn;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -31,6 +31,7 @@ public class ProfileFragment extends Fragment {
         buttonMyVideo = (Button) view.findViewById(R.id.buttonMyVideo);
         buttonMyStory = (Button) view.findViewById(R.id.buttonMyStory);
         buttonCalculateBMI = (Button) view.findViewById(R.id.buttonCalculateBMI);
+        buttonSignIn=(Button)view.findViewById(R.id.buttonSingnIn);
 
         buttonEditProfile.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -56,6 +57,13 @@ public class ProfileFragment extends Fragment {
         buttonCalculateBMI.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonSignIn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), SignInActivity.class);
                 startActivity(intent);
             }
         });
