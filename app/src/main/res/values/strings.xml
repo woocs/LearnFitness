@@ -51,4 +51,8 @@
     <string name="VideoCategories">Video Categories</string>
     <string name="Save">Save</string>
 
+    <string name="get_user_url">http://procaryotic-assista.000webhostapp.com/select_user.php</string>
+    <string name="insert_user_url">http://procaryotic-assista.000webhostapp.com/insertUser.php</string>
+
+
 </resources>

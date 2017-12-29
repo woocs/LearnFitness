@@ -7,18 +7,22 @@ package com.example.woo.learnfitness;
 public class User {
     private String id;
     private String name;
-    private int age;
+    private String age;
     private String gender;
     private String experience;
     private String imageprofile;
 
-    public User(String id, String name, int age, String gender, String experience, String imageprofile) {
+    public User(String id, String name, String age, String gender, String experience, String imageprofile) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.experience = experience;
         this.imageprofile = imageprofile;
+    }
+
+    public User() {
+
     }
 
     public String getId() {
@@ -37,11 +41,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
