@@ -1,6 +1,8 @@
 package com.example.woo.learnfitness;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,12 +46,11 @@ public class SignInActivity extends AppCompatActivity {
         int selectedId = radioGroupGender.getCheckedRadioButtonId();
         radioGenderButton = (RadioButton) findViewById(selectedId);
 
-
         user.setId(editTextName.getText().toString());
         user.setName(editTextName.getText().toString());
         user.setAge(editTextAge.getText().toString());
         user.setGender(radioGenderButton.getText().toString());
-        user.setExperience("beginner");
+        user.setExperience("Beginner");
         user.setImageprofile(String.valueOf((R.drawable.ic_account_box_black_24dp)));
 
         try {
@@ -117,10 +118,16 @@ public class SignInActivity extends AppCompatActivity {
             }
     }
     public void passData(){
-        Bundle bundle = new Bundle();
-        bundle.putString("userId", editTextName.getText().toString());
-        ProfileFragment profrag = new ProfileFragment();
-        profrag.setArguments(bundle);
+
+        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("userId", editTextName.getText().toString());
+        editor.putString("name", editTextName.getText().toString());
+        editor.putString("age", editTextAge.getText().toString());
+        editor.putString("gender", radioGenderButton.getText().toString());
+        editor.putString("exp", "Beginner");
+        editor.commit();
+
     }
 
 }

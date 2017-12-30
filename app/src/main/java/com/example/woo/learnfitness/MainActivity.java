@@ -1,5 +1,6 @@
 package com.example.woo.learnfitness;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,7 +14,7 @@ import static android.R.attr.tag;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    String Id;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -24,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    setTitle("Home");
+                    setTitle(R.string.title_home);
                     transaction.replace(R.id.content, new HomeFragment()).commit();
                     return true;
                 case R.id.navigation_categories:
-                    setTitle("Categories");
+                    setTitle(R.string.title_categories);
                     transaction.replace(R.id.content, new CategoriesFragment()).commit();
                     return true;
                 case R.id.navigation_favorite:
-                    setTitle("Favorite");
+                    setTitle(R.string.title_favorite);
                     transaction.replace(R.id.content, new FavoriteFragment()).commit();
                     return true;
                 case R.id.navigation_account_box:
-                    setTitle("Profile");
+                    setTitle(R.string.title_account_box);
                     transaction.replace(R.id.content, new ProfileFragment()).commit();
                     return true;
             }
@@ -55,8 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        setTitle("Home");
+        setTitle(R.string.title_home);
         transaction.replace(R.id.content, new HomeFragment()).commit();
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+        Id = preferences.getString("userId", null);
+    }
 }

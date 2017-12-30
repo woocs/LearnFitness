@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_categories">Categories</string>
     <string name="title_favorite">Favorite</string>
-    <string name="title_account_box">Me</string>
+    <string name="title_account_box">Profile</string>
 
     <!-- MeFragment -->
     <string name="hello_blank_fragment">Hello</string>
@@ -51,7 +51,7 @@
     <string name="VideoCategories">Video Categories</string>
     <string name="Save">Save</string>
 
-    <string name="get_user_url">http://procaryotic-assista.000webhostapp.com/select_user.php</string>
+    <string name="update_user_url">http://procaryotic-assista.000webhostapp.com/updateUser.php</string>
     <string name="insert_user_url">http://procaryotic-assista.000webhostapp.com/insertUser.php</string>
 
 
