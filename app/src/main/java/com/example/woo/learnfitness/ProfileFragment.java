@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
@@ -26,6 +27,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -62,6 +65,7 @@ public class ProfileFragment extends Fragment {
         buttonMyStory = (Button) view.findViewById(R.id.buttonMyStory);
         buttonCalculateBMI = (Button) view.findViewById(R.id.buttonCalculateBMI);
         buttonSignIn=(Button)view.findViewById(R.id.buttonSingnIn);
+
 
         buttonEditProfile.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -113,13 +117,23 @@ public class ProfileFragment extends Fragment {
         String age = preferences.getString("age", null);
         String gender = preferences.getString("gender", null);
         String exp = preferences.getString("exp", null);
+        String encodedImg = preferences.getString("img", null);
         textViewUserName.setText(name);
         textViewAge.setText(age);
         textViewGender.setText(gender);
         textViewExperience.setText(exp);
 
+        if(encodedImg == null) {
+            imageViewProfile.setImageResource(R.drawable.ic_account_box_black_24dp);
+        }else{
+            byte[] b = Base64.decode(encodedImg, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            imageViewProfile.setImageBitmap(bitmap);
+        }
+
         if(textViewUserName.getText().toString() != ""){
             buttonSignIn.setEnabled(false);
         }
+
     }
 }

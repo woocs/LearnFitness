@@ -1,7 +1,6 @@
 package com.example.woo.learnfitness;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -117,6 +116,7 @@ public class SignInActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
     }
+
     public void passData(){
 
         SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
@@ -126,6 +126,7 @@ public class SignInActivity extends AppCompatActivity {
         editor.putString("age", editTextAge.getText().toString());
         editor.putString("gender", radioGenderButton.getText().toString());
         editor.putString("exp", "Beginner");
+
         editor.commit();
 
     }

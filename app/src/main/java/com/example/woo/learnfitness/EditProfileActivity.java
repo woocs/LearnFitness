@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -60,7 +61,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
-
+        imageViewProfile = (ImageView) findViewById(R.id.imageViewProfile);
         spinnerExp = (Spinner)findViewById(R.id.spinnerExperience);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,R.array.spinnerExperience,android.R.layout.simple_spinner_item
@@ -78,6 +79,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         String age = preferences.getString("age", null);
         String gender = preferences.getString("gender", null);
         String exp = preferences.getString("exp", null);
+        String encodedImg = preferences.getString("img", null);
 
         editTextName.setText(name);
         editTextAge.setText(age);
@@ -90,7 +92,23 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         }
         if(exp.equalsIgnoreCase("beginner")) {
             spinnerExp.setSelection(1);
+        }else if(exp.equalsIgnoreCase("intermediate")){
+            spinnerExp.setSelection(2);
+        }else if(exp.equalsIgnoreCase("advanced")){
+            spinnerExp.setSelection(3);
+        }else{
+            spinnerExp.setSelection(0);
         }
+
+        if(encodedImg == null) {
+            imageViewProfile.setImageResource(R.drawable.ic_account_box_black_24dp);
+        }else{
+            byte[] b = Base64.decode(encodedImg, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            imageViewProfile.setImageBitmap(bitmap);
+            image = getStringImage(bitmap);
+        }
+
     }
 
     public void selectImage(View v){
@@ -144,7 +162,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
                     imageViewProfile = (ImageView) findViewById(R.id.imageViewProfile);
                     imageViewProfile.setImageBitmap(bitmap);
                 }catch(IOException e){
-                    e.printStackTrace();;
+                    e.printStackTrace();
                 }
 
                 imageViewProfile.setImageURI(uri);
@@ -159,6 +177,18 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+
+                    SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("userId", user.getId());
+                    editor.putString("name", user.getName());
+                    editor.putString("age", user.getAge());
+                    editor.putString("gender", user.getGender());
+                    editor.putString("exp", user.getExperience());
+                    editor.putString("img", user.getImageprofile());
+
+                    editor.commit();
+
                     Toast.makeText(getApplicationContext(), "Response. " + response, Toast.LENGTH_LONG).show();
                     finish();
                 }
