@@ -53,6 +53,7 @@
 
     <string name="update_user_url">http://procaryotic-assista.000webhostapp.com/updateUser.php</string>
     <string name="insert_user_url">http://procaryotic-assista.000webhostapp.com/insertUser.php</string>
-
+    <string name="insert_story_url">http://procaryotic-assista.000webhostapp.com/insertStory.php</string>
+    <string name="update_story_url">http://procaryotic-assista.000webhostapp.com/updateStory.php</string>
 
 </resources>

@@ -18,7 +18,7 @@
         android:ems="1"
         android:gravity="top|start"
 
-        android:hint="@string/MyStory"
+        android:text="@string/MyStory"
         app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -33,6 +33,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:onClick="saveStory"
         android:text="@string/Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
