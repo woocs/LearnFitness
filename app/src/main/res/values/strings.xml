@@ -55,5 +55,7 @@
     <string name="insert_user_url">http://procaryotic-assista.000webhostapp.com/insertUser.php</string>
     <string name="insert_story_url">http://procaryotic-assista.000webhostapp.com/insertStory.php</string>
     <string name="update_story_url">http://procaryotic-assista.000webhostapp.com/updateStory.php</string>
+    <string name="insert_image_url">http://procaryotic-assista.000webhostapp.com/addImage.php</string>
+    <string name="update_image_url">http://procaryotic-assista.000webhostapp.com/editImage.php</string>
 
 </resources>
