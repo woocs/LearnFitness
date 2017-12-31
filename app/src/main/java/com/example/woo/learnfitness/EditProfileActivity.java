@@ -74,7 +74,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         editTextName.setText(e);
 
         SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-         Id = preferences.getString("userId", null);
+        Id = preferences.getString("userId", null);
         String name = preferences.getString("name", null);
         String age = preferences.getString("age", null);
         String gender = preferences.getString("gender", null);

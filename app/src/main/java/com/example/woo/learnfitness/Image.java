@@ -4,18 +4,17 @@ package com.example.woo.learnfitness;
  * Created by woo on 12/31/2017.
  */
 
-public class image {
+public class Image {
     private String id;
     private String imgbefore, imgafter;
 
-    public image(String id, String imgbefore, String imgafter) {
+    public Image(String id, String imgbefore, String imgafter) {
         this.id = id;
         this.imgbefore = imgbefore;
         this.imgafter = imgafter;
     }
 
-    public String getId() {
-        return id;
+    public Image(){
     }
 
     public void setId(String id) {
@@ -40,7 +39,7 @@ public class image {
 
     @Override
     public String toString() {
-        return "image{" +
+        return "Image{" +
                 "id='" + id + '\'' +
                 ", imgbefore='" + imgbefore + '\'' +
                 ", imgafter='" + imgafter + '\'' +

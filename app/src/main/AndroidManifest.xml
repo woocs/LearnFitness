@@ -59,6 +59,15 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".StoryActivity" />
+        <activity
+            android:name=".UploadVideoActivity"
+            android:label="@string/title_activity_upload_video"
+            android:parentActivityName=".MyVideoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.woo.learnfitness.MyVideoActivity" />
+        </activity>
     </application>
 
 </manifest>
