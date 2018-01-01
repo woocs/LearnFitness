@@ -46,7 +46,7 @@ public class StoryActivity extends AppCompatActivity {
         if(txtContent.getText().toString().equalsIgnoreCase("")){
             btnSave.setText("save");
         }else{
-            btnSave.setText("edit");
+            btnSave.setText("update");
         }
 
 
