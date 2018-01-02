@@ -82,8 +82,8 @@ public class SignInActivity extends AppCompatActivity {
 
                         }
                     } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    e.printStackTrace();
+                }
                 }
             },
                     new Response.ErrorListener(){
