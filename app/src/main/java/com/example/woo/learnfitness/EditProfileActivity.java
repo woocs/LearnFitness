@@ -112,9 +112,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void selectImage(View v){
-        Intent intent = new Intent (Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        Intent intent = new Intent ();
         intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
 
         startActivityForResult(intent, REQUEST_PHOTO);
     }
