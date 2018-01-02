@@ -46,7 +46,7 @@
         <ImageView
             android:id="@+id/imageViewAfter"
             android:layout_width="200dp"
-            android:layout_height="220dp"
+            android:layout_height="230dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
         <ImageView
             android:id="@+id/imageViewBefore"
             android:layout_width="200dp"
-            android:layout_height="220dp"
+            android:layout_height="230dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
