@@ -143,7 +143,7 @@ public class UploadVideoActivity extends AppCompatActivity {
         video.setTitle(editTextTitle.getText().toString());
         video.setCategories(radioButtonCategories.getText().toString());
         video.setFavorite("not");
-        video.setLike("0");
+        video.setLikes("0");
 
         try {
             makeServiceCall(this, getString(R.string.insert_video_url), video);
@@ -189,7 +189,7 @@ public class UploadVideoActivity extends AppCompatActivity {
                     params.put("title", video.getTitle());
                     params.put("categories", video.getCategories());
                     params.put("favorite", video.getFavorite());
-                    params.put("like", video.getLike());
+                    params.put("like", video.getLikes());
                     params.put("user_id", Id);
                     return params;
                 }

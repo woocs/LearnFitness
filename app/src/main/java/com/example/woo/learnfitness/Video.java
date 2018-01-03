@@ -5,21 +5,22 @@ package com.example.woo.learnfitness;
  */
 
 public class Video{
-    private String id;
+
     private String video;
     private String title;
     private String categories;
     private String favorite;
-    private String like;
+    private String likes;
+    private String id;
 
-
-    public Video(String id, String video, String title, String categories, String favorite, String like) {
-        this.id = id;
+    public Video(String video, String title, String categories, String favorite, String likes, String id) {
         this.video=video;
         this.title=title;
         this.categories=categories;
         this.favorite=favorite;
-        this.like=like;
+        this.likes=likes;
+        this.id = id;
+
     }
     public Video(){
 
@@ -65,14 +66,13 @@ public class Video{
         this.favorite = favorite;
     }
 
-    public String getLike() {
-        return like;
+    public String getLikes() {
+        return likes;
     }
 
-    public void setLike(String like) {
-        this.like = like;
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
-
 
     @Override
     public String toString() {
@@ -82,7 +82,7 @@ public class Video{
                 ", title='" + title + '\'' +
                 ", categories='" + categories + '\'' +
                 ", favorite='" + favorite + '\'' +
-                ", like='" + like + '\'' +
+                ", likes='" + likes + '\'' +
                 '}';
     }
 }

@@ -56,6 +56,8 @@
     <string name="insert_story_url">http://procaryotic-assista.000webhostapp.com/insertStory.php</string>
     <string name="update_story_url">http://procaryotic-assista.000webhostapp.com/updateStory.php</string>
     <string name="insert_video_url">http://procaryotic-assista.000webhostapp.com/insertVideo.php</string>
+    <string name="get_video_url">http://procaryotic-assista.000webhostapp.com/getVideo.php</string>
+    <string name="get_myvideo_url">http://procaryotic-assista.000webhostapp.com/getMyVideo.php</string>
 
     <string name="title_activity_upload_video">UploadVideoActivity</string>
     <string name="ChooseVideo">Choose Video</string>
