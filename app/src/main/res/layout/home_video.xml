@@ -51,11 +51,11 @@
         android:id="@+id/imageButtonFavorite"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textViewVideoCategories"
-        app:srcCompat="@drawable/ic_favorite_border_black_24dp"
         app:layout_constraintLeft_toRightOf="@+id/imageButtonLike"
-        android:layout_marginLeft="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewVideoCategories"
+        app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
 
     <ImageButton
         android:id="@+id/imageButtonLike"

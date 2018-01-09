@@ -3,12 +3,15 @@ package com.example.woo.learnfitness;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
@@ -21,10 +24,23 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.data;
 
 public class MyVideoActivity extends AppCompatActivity {
     public static final String TAG = "com.example.woo.learnfitness";
@@ -40,13 +56,6 @@ public class MyVideoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        pDialog = new ProgressDialog(this);
-        vList = new ArrayList<>();
-
-        if (!isConnected()) {
-            Toast.makeText(getApplicationContext(), "No network", Toast.LENGTH_LONG).show();
-        }
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +66,12 @@ public class MyVideoActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        pDialog = new ProgressDialog(this);
+        vList = new ArrayList<>();
+
+        if (!isConnected()) {
+            Toast.makeText(getApplicationContext(), "No network", Toast.LENGTH_LONG).show();
+        }
     }
 
     private boolean isConnected() {
@@ -73,14 +88,15 @@ public class MyVideoActivity extends AppCompatActivity {
             pDialog.setMessage("Loading...");
         pDialog.show();
 
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+                url,
+                new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
                             vList.clear();
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject videoResponse = (JSONObject) response.get(i);
-
                                 String viewvideo = videoResponse.getString("video");
                                 String title = videoResponse.getString("title");
                                 String categories = videoResponse.getString("categories");

@@ -1,5 +1,6 @@
 package com.example.woo.learnfitness;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,6 +56,8 @@ public class UploadVideoActivity extends AppCompatActivity {
     private static final int REQUEST_VIDEO = 1;
     static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 100;
     String Id, path;
+    private ProgressDialog pDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class UploadVideoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextTitle = (EditText) findViewById(R.id.editTextVideoTitle);
+        pDialog = new ProgressDialog(this);
 
         int permissionCheck = ContextCompat.checkSelfPermission(UploadVideoActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -155,7 +159,9 @@ public class UploadVideoActivity extends AppCompatActivity {
 
     public void makeServiceCall(Context context, String url, final Video video){
         RequestQueue queue = Volley.newRequestQueue(context);
-
+        if (!pDialog.isShowing())
+            pDialog.setMessage("Loading...");
+        pDialog.show();
         try{
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -171,6 +177,8 @@ public class UploadVideoActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                             finish();
                         }
+                        if (pDialog.isShowing())
+                            pDialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -180,6 +188,8 @@ public class UploadVideoActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), "Error. ", Toast.LENGTH_LONG).show();
+                            if (pDialog.isShowing())
+                                pDialog.dismiss();
                         }
                     }){
                 @Override

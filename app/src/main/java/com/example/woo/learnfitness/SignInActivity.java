@@ -1,5 +1,6 @@
 package com.example.woo.learnfitness;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class SignInActivity extends AppCompatActivity {
     EditText editTextName, editTextAge;
     RadioGroup radioGroupGender;
     RadioButton radioGenderButton;
+    private ProgressDialog pDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class SignInActivity extends AppCompatActivity {
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
+        pDialog = new ProgressDialog(this);
+
     }
 
     public void saveUser(View v) {
@@ -62,7 +67,9 @@ public class SignInActivity extends AppCompatActivity {
 
     public void makeServiceCall(Context context, String url, final User user){
         RequestQueue queue = Volley.newRequestQueue(context);
-
+        if (!pDialog.isShowing())
+            pDialog.setMessage("Loading...");
+        pDialog.show();
         try{
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -79,8 +86,9 @@ public class SignInActivity extends AppCompatActivity {
 
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                             finish();
-
                         }
+                        if (pDialog.isShowing())
+                            pDialog.dismiss();
                     } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -90,6 +98,8 @@ public class SignInActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), "Error. ", Toast.LENGTH_LONG).show();
+                            if (pDialog.isShowing())
+                                pDialog.dismiss();
                         }
                     }){
                 @Override

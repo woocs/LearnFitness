@@ -1,5 +1,6 @@
 package com.example.woo.learnfitness;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,6 +49,8 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
     private ImageView imageViewProfile;
     private static final int REQUEST_PHOTO = 1;
     String Id,image;
+    private ProgressDialog pDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,8 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        pDialog = new ProgressDialog(this);
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
@@ -173,6 +178,9 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
     public void makeServiceCall(Context context, String url, final User user){
         RequestQueue queue = Volley.newRequestQueue(context);
 
+        if (!pDialog.isShowing())
+            pDialog.setMessage("Loading...");
+        pDialog.show();
         try{
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
@@ -190,13 +198,16 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
                     editor.commit();
 
                     Toast.makeText(getApplicationContext(), "Response. " + response, Toast.LENGTH_LONG).show();
-                    finish();
+                    if (pDialog.isShowing())
+                        pDialog.dismiss();
                 }
             },
                     new Response.ErrorListener(){
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getApplicationContext(), "Error. ", Toast.LENGTH_LONG).show();
+                            if (pDialog.isShowing())
+                                pDialog.dismiss();
                         }
                     }){
                 @Override

@@ -58,9 +58,14 @@
     <string name="insert_video_url">http://procaryotic-assista.000webhostapp.com/insertVideo.php</string>
     <string name="get_video_url">http://procaryotic-assista.000webhostapp.com/getVideo.php</string>
     <string name="get_myvideo_url">http://procaryotic-assista.000webhostapp.com/getMyVideo.php</string>
+    <string name="update_video_url">http://procaryotic-assista.000webhostapp.com/updateVideo.php</string>
+
 
     <string name="title_activity_upload_video">UploadVideoActivity</string>
     <string name="ChooseVideo">Choose Video</string>
     <string name="UploadVideo">Upload Video</string>
-
+    <string name="buttonViewMyFav">View My Favorite Video</string>
+    <string name="buttonAddFav">Add Favorite Video</string>
+    <string name="title_activity_my_fav">MyFavActivity</string>
+    <string name="title_activity_categories">CategoriesActivity</string>
 </resources>

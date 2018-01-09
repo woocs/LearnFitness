@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class VideoAdapter extends ArrayAdapter<Video> {
 
-    public VideoAdapter(Activity context, int resource, List<Video> list) {
+    public VideoAdapter(Context context, int resource, List<Video> list) {
         super(context, resource, list);
     }
 
@@ -34,8 +36,9 @@ public class VideoAdapter extends ArrayAdapter<Video> {
 
         View rowView = inflater.inflate(R.layout.home_video, parent, false);
 
-        TextView textViewVideoTitle, textViewVideoCategories, textViewLike, textViewFavorite, textViewName;
+        final TextView textViewVideoTitle, textViewVideoCategories, textViewLike, textViewFavorite, textViewName;
         final VideoView videoView;
+        ImageButton imageButtonFavorite, imageButtonLike;
 
         videoView = (VideoView)rowView.findViewById(R.id.videoView);
         textViewVideoTitle = (TextView)rowView.findViewById(R.id.textViewVideoTitle);
@@ -43,7 +46,8 @@ public class VideoAdapter extends ArrayAdapter<Video> {
         textViewLike = (TextView) rowView.findViewById(R.id.textViewLike);
         textViewFavorite = (TextView) rowView.findViewById(R.id.textViewFavorite);
         textViewName = (TextView) rowView.findViewById(R.id.textViewName);
-
+        imageButtonFavorite = (ImageButton) rowView.findViewById(R.id.imageButtonFavorite);
+        imageButtonLike = (ImageButton) rowView.findViewById(R.id.imageButtonLike);
 
         videoView.setVideoPath(video.getVideo());
         videoView.pause();
@@ -62,6 +66,27 @@ public class VideoAdapter extends ArrayAdapter<Video> {
         textViewFavorite.setText(video.getFavorite());
         textViewLike.setText(video.getLikes());
         textViewName.setText(video.getId());
+
+        imageButtonFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(textViewFavorite.getText().toString().equalsIgnoreCase("not")) {
+                    textViewFavorite.setText("yes");
+                }else{
+                    textViewFavorite.setText("not");
+                }
+            }
+        });
+
+        imageButtonLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int like = Integer.parseInt(textViewLike.getText().toString());
+                int total;
+                total=like+1;
+                textViewLike.setText(String.valueOf(total));
+            }
+        });
         return rowView;
     }
 

@@ -2,96 +2,45 @@ package com.example.woo.learnfitness;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static android.R.attr.tag;
-
-public class MainActivity extends AppCompatActivity {
+public class MyFavActivity extends AppCompatActivity {
     public static final String TAG = "com.example.woo.learnfitness";
     List<Video> vList;
     private ProgressDialog pDialog;
     RequestQueue queue;
-    String Id;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    setTitle(R.string.title_home);
-                    transaction.replace(R.id.content, new HomeFragment()).commit();
-                    return true;
-                case R.id.navigation_categories:
-                    setTitle(R.string.title_categories);
-                    transaction.replace(R.id.content, new CategoriesFragment()).commit();
-                    return true;
-                case R.id.navigation_favorite:
-                    setTitle(R.string.title_favorite);
-                    transaction.replace(R.id.content, new FavoriteFragment()).commit();
-                    return true;
-                case R.id.navigation_account_box:
-                    setTitle(R.string.title_account_box);
-                    transaction.replace(R.id.content, new ProfileFragment()).commit();
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_my_fav);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        setTitle(R.string.title_home);
-        transaction.replace(R.id.content, new HomeFragment()).commit();
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pDialog = new ProgressDialog(this);
         vList = new ArrayList<>();
-        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-        Id = preferences.getString("userId", null);
 
         if (!isConnected()) {
             Toast.makeText(getApplicationContext(), "No network", Toast.LENGTH_LONG).show();
@@ -169,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-       downloadVideo(getApplicationContext(), getString(R.string.get_video_url));
+        downloadVideo(getApplicationContext(), getString(R.string.get_video_url));
     }
 
 }
