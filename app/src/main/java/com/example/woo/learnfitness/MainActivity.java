@@ -131,11 +131,12 @@ public class MainActivity extends AppCompatActivity {
                                 vList.add(video);
                             }
                             loadVideo();
-                            if (pDialog.isShowing())
-                                pDialog.dismiss();
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Error:" + e.getMessage(), Toast.LENGTH_LONG).show();
+
                         }
+
+                        if (pDialog.isShowing())
+                            pDialog.dismiss();
                     }
                 },
                 new Response.ErrorListener() {
