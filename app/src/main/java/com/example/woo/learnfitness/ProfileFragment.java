@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -66,44 +67,6 @@ public class ProfileFragment extends Fragment {
         buttonCalculateBMI = (Button) view.findViewById(R.id.buttonCalculateBMI);
         buttonSignIn=(Button)view.findViewById(R.id.buttonSingnIn);
 
-
-        buttonEditProfile.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonMyVideo.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), MyVideoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonMyStory.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), MyStoryActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonCalculateBMI.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonSignIn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), SignInActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
         return view;
     }
 
@@ -131,8 +94,80 @@ public class ProfileFragment extends Fragment {
             imageViewProfile.setImageBitmap(bitmap);
         }
 
-        if(textViewUserName.getText().toString() != ""){
-            buttonSignIn.setEnabled(false);
+        if(textViewUserName.getText().toString() == ""){
+
+
+            buttonEditProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
+            buttonMyVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
+            buttonMyStory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonCalculateBMI.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonSignIn.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), SignInActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }else{
+            buttonEditProfile.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonMyVideo.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MyVideoActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonMyStory.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), MyStoryActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonCalculateBMI.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            buttonSignIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "Already have an account", Toast.LENGTH_LONG).show();
+                }
+            });
+
         }
 
     }
