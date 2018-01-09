@@ -1,9 +1,7 @@
 package com.example.woo.learnfitness;
 
-import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +11,6 @@ import android.widget.ImageButton;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -38,7 +34,8 @@ public class VideoAdapter extends ArrayAdapter<Video> {
 
         final TextView textViewVideoTitle, textViewVideoCategories, textViewLike, textViewFavorite, textViewName;
         final VideoView videoView;
-        ImageButton imageButtonFavorite, imageButtonLike;
+        final ImageButton imageButtonFavorite;
+        final Button buttonLike;
 
         videoView = (VideoView)rowView.findViewById(R.id.videoView);
         textViewVideoTitle = (TextView)rowView.findViewById(R.id.textViewVideoTitle);
@@ -47,7 +44,7 @@ public class VideoAdapter extends ArrayAdapter<Video> {
         textViewFavorite = (TextView) rowView.findViewById(R.id.textViewFavorite);
         textViewName = (TextView) rowView.findViewById(R.id.textViewName);
         imageButtonFavorite = (ImageButton) rowView.findViewById(R.id.imageButtonFavorite);
-        imageButtonLike = (ImageButton) rowView.findViewById(R.id.imageButtonLike);
+        buttonLike = (Button) rowView.findViewById(R.id.buttonLike);
 
         videoView.setVideoPath(video.getVideo());
         videoView.pause();
@@ -72,19 +69,28 @@ public class VideoAdapter extends ArrayAdapter<Video> {
             public void onClick(View v) {
                 if(textViewFavorite.getText().toString().equalsIgnoreCase("not")) {
                     textViewFavorite.setText("yes");
+                    imageButtonFavorite.setImageResource(R.drawable.ic_favorite_black_24dp);
                 }else{
                     textViewFavorite.setText("not");
+                    imageButtonFavorite.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                 }
             }
         });
 
-        imageButtonLike.setOnClickListener(new View.OnClickListener() {
+        buttonLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int like = Integer.parseInt(textViewLike.getText().toString());
                 int total;
-                total=like+1;
-                textViewLike.setText(String.valueOf(total));
+                if(buttonLike.getText().equals("like")) {
+                    total = like + 1;
+                    textViewLike.setText(String.valueOf(total));
+                    buttonLike.setText("liked");
+                }else{
+                    total = like - 1;
+                    textViewLike.setText(String.valueOf(total));
+                    buttonLike.setText("like");
+                }
             }
         });
         return rowView;
