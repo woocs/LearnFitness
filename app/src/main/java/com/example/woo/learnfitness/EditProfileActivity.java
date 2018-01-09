@@ -198,8 +198,7 @@ public class EditProfileActivity extends AppCompatActivity implements AdapterVie
                     editor.commit();
 
                     Toast.makeText(getApplicationContext(), "Response. " + response, Toast.LENGTH_LONG).show();
-                    if (pDialog.isShowing())
-                        pDialog.dismiss();
+                    finish();
                 }
             },
                     new Response.ErrorListener(){
