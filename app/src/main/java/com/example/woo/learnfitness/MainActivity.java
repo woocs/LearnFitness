@@ -2,6 +2,7 @@ package com.example.woo.learnfitness;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_categories:
                     setTitle(R.string.title_categories);
                     transaction.replace(R.id.content, new CategoriesFragment()).commit();
+                    return true;
+                case R.id.navigation_bmi:
+                    setTitle(R.string.title_activity_calculate_bmi);
+                    startActivity(new Intent(MainActivity.this,CalculateBMIActivity.class));
                     return true;
                 case R.id.navigation_favorite:
                     setTitle(R.string.title_favorite);

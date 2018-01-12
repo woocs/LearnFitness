@@ -64,7 +64,6 @@ public class ProfileFragment extends Fragment {
         buttonEditProfile = (Button) view.findViewById(R.id.buttonEditProfile);
         buttonMyVideo = (Button) view.findViewById(R.id.buttonMyVideo);
         buttonMyStory = (Button) view.findViewById(R.id.buttonMyStory);
-        buttonCalculateBMI = (Button) view.findViewById(R.id.buttonCalculateBMI);
         buttonSignIn=(Button)view.findViewById(R.id.buttonSingnIn);
 
         return view;
@@ -119,13 +118,6 @@ public class ProfileFragment extends Fragment {
                 }
             });
 
-            buttonCalculateBMI.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
-                    startActivity(intent);
-                }
-            });
-
             buttonSignIn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), SignInActivity.class);
@@ -150,13 +142,6 @@ public class ProfileFragment extends Fragment {
             buttonMyStory.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), MyStoryActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-            buttonCalculateBMI.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), CalculateBMIActivity.class);
                     startActivity(intent);
                 }
             });
